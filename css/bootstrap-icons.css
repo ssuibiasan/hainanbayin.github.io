@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "bootstrap-icons";
+  src: url("./fonts/bootstrap-icons.woff") format("woff2"),
+    url("./fonts/bootstrap-icons.woff?") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.bi {
+  font-family: bootstrap-icons !important;
+  font-size: 1em;
+  line-height: 1;
+  vertical-align: -.125em;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 核心：补充播放图标编码（解决显示成“目”字的问题） */
+.bi-play-fill::before {
+  content: "\f452";
+}
+
+.bi-play-circle-fill::before {
+  content: "\f451";
+}
+
+.bi-caret-right-fill::before {
+  content: "\f282";
+}
+
+/* 可选：其他常用图标（备用） */
+.bi-house::before {
+  content: "\f429";
+}
+
+.bi-search::before {
+  content: "\f52a";
+}

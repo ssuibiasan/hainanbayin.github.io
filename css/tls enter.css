@@ -1,0 +1,25 @@
+/* 流式返回键容器，宽度100%，不受container限制 */
+.back-btn-left-flow {
+  width: 100%;
+  padding: 0 0 20px 0;
+}
+
+/* 贴紧最左的返回键样式 */
+.back-btn-flow-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px 8px 20px;
+  background: linear-gradient(to right, #8B4513, #D2B48C);
+  border-radius: 0 8px 8px 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-btn-flow-item:hover {
+  padding-left: 24px;
+  color: #f0e68c;
+}

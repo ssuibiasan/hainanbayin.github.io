@@ -1,0 +1,143 @@
+body {
+  background-image: url('../img/tls\ bg.png');
+}
+
+.timeline-box {
+  margin: 40px auto;
+  background-color: #fffbe6;
+  border-radius: 20px;
+  padding: 100px;
+  max-width: 1900px;
+  width: 90%;
+  transform: translateX(0);
+}
+
+.timeline-title {
+  text-align: center;
+  font-size: clamp(26px, 3.5vw, 48px);
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+
+.timeline-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.arrow-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.arrow-btn:hover {
+  color: #e67e22;
+}
+
+.arrow-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.scroll-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.timeline-track {
+  display: flex;
+  gap: 12px;
+  transition: transform 0.3s ease;
+  position: relative;
+  padding: 60px 0;
+  width: fit-content;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #e67e22;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline-node {
+  min-width: clamp(260px, 30vw, 420px);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.node-dot {
+  width: clamp(26px, 8vw, 38px);
+  height: clamp(26px, 8vw, 38px);
+  border-radius: 50%;
+  background-color: #fff;
+  border: 5px solid #e67e22;
+  z-index: 3;
+}
+
+.node-dash {
+  width: 5px;
+  height: clamp(40px, 4vw, 55px);
+  background: repeating-linear-gradient(to bottom, #e67e22 0px, #e67e22 4px, transparent 4px, transparent 8px);
+}
+
+.node-img {
+  width: clamp(110px, 11vw, 160px);
+  height: clamp(110px, 11vw, 160px);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.node-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.node-date {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.node-name {
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: #666;
+}
+
+.type-bottom .node-link {
+  flex-direction: column-reverse;
+}
+
+.type-bottom .node-dash {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,301 @@
+body {
+  background-image: url('../img/tyl\ bg.png');
+}
+
+/* 8种乐器*/
+.audio-circle-wrapper {
+  position: relative;
+  max-width: 1900px;
+  margin: 45px auto 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.audio-circle-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.circle-center-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 60%;
+  max-height: 85%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.instrument-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  max-width: 85px;
+  width: 8vw;
+  min-width: 65px;
+  height: auto;
+  padding: 8px 12px;
+  background: #b58d3f;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.instrument-btn:hover,
+.instrument-btn.active {
+  background: #d4a84f;
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+:root {
+  --circle-r: min(25vh, 23vw);
+  --cos45: 0.7071;
+}
+
+.instrument-btn:nth-of-type(1) {
+  top: calc(50% - var(--circle-r));
+  left: 50%;
+}
+
+.instrument-btn:nth-of-type(2) {
+  top: calc(50% - var(--circle-r) * var(--cos45));
+  left: calc(50% + var(--circle-r) * var(--cos45));
+}
+
+.instrument-btn:nth-of-type(3) {
+  top: 50%;
+  left: calc(50% + var(--circle-r));
+}
+
+.instrument-btn:nth-of-type(4) {
+  top: calc(50% + var(--circle-r) * var(--cos45));
+  left: calc(50% + var(--circle-r) * var(--cos45));
+}
+
+.instrument-btn:nth-of-type(5) {
+  top: calc(50% + var(--circle-r));
+  left: 50%;
+}
+
+.instrument-btn:nth-of-type(6) {
+  top: calc(50% + var(--circle-r) * var(--cos45));
+  left: calc(50% - var(--circle-r) * var(--cos45));
+}
+
+.instrument-btn:nth-of-type(7) {
+  top: 50%;
+  left: calc(50% - var(--circle-r));
+}
+
+.instrument-btn:nth-of-type(8) {
+  top: calc(50% - var(--circle-r) * var(--cos45));
+  left: calc(50% - var(--circle-r) * var(--cos45));
+}
+
+
+.dash-circle-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: calc(var(--circle-r) * 2.2);
+  max-height: calc(var(--circle-r) * 2.2);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  z-index: 2.5;
+}
+
+#instrumentAudio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 60%;
+  max-width: 300px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#instrumentAudio.show-controls {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+#waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0 5%;
+  box-sizing: border-box;
+  max-height: 90%;
+  top: 5%;
+}
+
+
+#waveform>div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#waveform canvas {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+
+/* 卡片*/
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.control-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+
+.control-btn {
+  background: transparent;
+  border: none;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 5px;
+}
+
+
+.control-btn.play {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: #b88628;
+}
+
+
+.control-btn:hover {
+  transform: scale(1.15);
+  color: #b88628;
+}
+
+.music-cards-section {
+  width: 90%;
+  max-width: 1800px;
+  margin: 40px auto 60px auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.music-card {
+  position: relative;
+  flex: 1 1 calc(25% - 20px);
+  min-width: 280px;
+  aspect-ratio: 4 / 3;
+  border: 3px solid #c9a86b;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f8f5f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: block;
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+.music-name {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: bold;
+  color: #b88628;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "思源宋体", "宋体", serif;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.progress-bar {
+  width: 90%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #d4c8b8;
+  border-radius: 3px;
+  outline: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .music-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 767px) {
+  .music-card {
+    flex: 1 1 100%;
+  }
+
+  .music-cards-section {
+    width: 95%;
+    gap: 15px;
+  }
+}
