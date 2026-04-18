@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/bootstrap-icons.css" rel="stylesheet">
+  <link href="../css/main.css" rel="stylesheet" />
+  <link href="../css/syq.css" rel="stylesheet">
+  <title>赏乐器 - 海南八音文化</title>
+</head>
+
+<body>>
+  <nav class="navbar navbar-expand-lg custom-brown-nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">海南八音文化</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="tls.html">探历史</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="syq.html">赏乐器</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tyl.html">听音律</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="qby.html">趣八音</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="instrument-wrapper">
+    <h2 class="instrument-title">乐器鉴赏</h2>
+
+    <div class="control-arrow arrow-left" id="prevBtn">‹</div>
+    <div class="control-arrow arrow-right" id="nextBtn">›</div>
+
+    <div class="instrument-viewport">
+      <div class="instrument-scroll" id="instrumentScroll">
+        <div class="instrument-card" onclick="window.location.href='syq8.html'">
+          <img src="../img/gu.png" class="instrument-img" alt="鼓">
+          <p class="instrument-name">鼓</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq1.html'">
+          <img src="../img/yehu.png" class="instrument-img" alt="椰胡">
+          <p class="instrument-name">椰胡</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq2.html'">
+          <img src="../img/suona.png" class="instrument-img" alt="唢呐">
+          <p class="instrument-name">唢呐</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq3.html'">
+          <img src="../img/xiao.png" class="instrument-img" alt="箫">
+          <p class="instrument-name">箫</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq4.html'">
+          <img src="../img/houguan.png" class="instrument-img" alt="竹喉管">
+          <p class="instrument-name">竹喉管</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq5.html'">
+          <img src="../img/guangbo.png" class="instrument-img" alt="广钹">
+          <p class="instrument-name">广钹</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq6.html'">
+          <img src="../img/luo.png" class="instrument-img" alt="锣">
+          <p class="instrument-name">锣</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq7.html'">
+          <img src="../img/yangqin.png" class="instrument-img" alt="扬琴">
+          <p class="instrument-name">扬琴</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq8.html'">
+          <img src="../img/gu.png" class="instrument-img" alt="鼓">
+          <p class="instrument-name">鼓</p>
+        </div>
+        <div class="instrument-card" onclick="window.location.href='syq1.html'">
+          <img src="../img/yehu.png" class="instrument-img" alt="椰胡">
+          <p class="instrument-name">椰胡</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container w-100 mt-5">
+      <div id="instrumentChart" class="w-100" style="height: clamp(300px, 50vw, 400px);"></div>
+      <p class="text-center text-muted mt-2 mb-0">基于海南出版社《海南八音传统曲集》120首经典曲目统计</p>
+    </div>
+
+  </div>
+
+  <script>
+    const scrollContainer = document.getElementById('instrumentScroll');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const cards = document.querySelectorAll('.instrument-card');
+    const viewport = document.querySelector('.instrument-viewport');
+
+    function updateArrowPosition() {
+      const firstCard = cards[0];
+      const cardRect = firstCard.getBoundingClientRect();
+      const wrapperRect = document.querySelector('.instrument-wrapper').getBoundingClientRect();
+
+      const cardCenterY = cardRect.top - wrapperRect.top + cardRect.height / 2;
+
+      prevBtn.style.top = cardCenterY + 'px';
+      nextBtn.style.top = cardCenterY + 'px';
+      prevBtn.style.transform = 'translateY(-50%)';
+      nextBtn.style.transform = 'translateY(-50%)';
+    }
+
+
+    const getCardStep = () => {
+      const card = cards[0];
+      const cardWidth = card.offsetWidth;
+      const marginLeft = parseInt(getComputedStyle(card).marginLeft);
+      const marginRight = parseInt(getComputedStyle(card).marginRight);
+      return cardWidth + marginLeft + marginRight;
+    };
+    const cardStep = getCardStep();
+
+
+    let currentIndex = 1;
+
+    const originalCardCount = 8;
+
+    const maxScrollIndex = cards.length - 1;
+
+
+    initCarousel();
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex--;
+      updateScrollPosition(true);
+
+      if (currentIndex === 0) {
+        setTimeout(() => {
+          currentIndex = originalCardCount;
+          scrollContainer.style.transition = 'none';
+          updateScrollPosition(false);
+          setTimeout(() => {
+            scrollContainer.style.transition = 'transform 0.5s ease';
+          }, 50);
+        }, 500);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex++;
+      updateScrollPosition(true);
+
+      if (currentIndex === maxScrollIndex) {
+        setTimeout(() => {
+          currentIndex = 1;
+          scrollContainer.style.transition = 'none';
+          updateScrollPosition(false);
+          setTimeout(() => {
+            scrollContainer.style.transition = 'transform 0.5s ease';
+          }, 50);
+        }, 500);
+      }
+    });
+
+
+    function initCarousel() {
+      const viewportHalf = viewport.offsetWidth / 2;
+      const cardHalf = (cards[0].offsetWidth) / 2;
+      const initialX = (currentIndex * cardStep) - (viewportHalf - cardHalf);
+
+      scrollContainer.style.transition = 'none';
+      scrollContainer.style.transform = `translateX(-${Math.round(initialX)}px)`;
+      cards[currentIndex].classList.add('active');
+      setTimeout(() => {
+        scrollContainer.style.transition = 'transform 0.5s ease';
+        updateArrowPosition();
+      }, 50);
+    }
+
+    function updateScrollPosition(hasAnimation = true) {
+      const viewportHalf = viewport.offsetWidth / 2;
+      const cardHalf = (cards[0].offsetWidth) / 2;
+      const scrollX = (currentIndex * cardStep) - (viewportHalf - cardHalf);
+
+      if (!hasAnimation) {
+        scrollContainer.style.transition = 'none';
+      }
+      scrollContainer.style.transform = `translateX(-${Math.round(scrollX)}px)`;
+      if (!hasAnimation) {
+        setTimeout(() => {
+          scrollContainer.style.transition = 'transform 0.5s ease';
+        }, 50);
+      }
+
+      cards.forEach(card => card.classList.remove('active'));
+      cards[currentIndex].classList.add('active');
+    }
+
+    cards.forEach((card, index) => {
+      card.addEventListener('click', (e) => {
+        let targetIndex = index;
+        if (index === 0) {
+          targetIndex = originalCardCount;
+        } else if (index === maxScrollIndex) {
+          targetIndex = 1;
+        }
+
+        if (targetIndex !== currentIndex) {
+          e.preventDefault();
+          currentIndex = targetIndex;
+          updateScrollPosition(true);
+          setTimeout(() => {
+            window.location.href = card.getAttribute('onclick').replace('window.location.href=', '').replace(/['"]/g, '');
+          }, 500);
+        }
+      });
+    });
+
+    window.addEventListener('resize', updateArrowPosition);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script>
+    var instrumentChart = echarts.init(document.getElementById('instrumentChart'));
+    var option = {
+      color: ['#8b5a2b'],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' },
+        formatter: '{b}：{c}% 曲目使用频次'
+      },
+      grid: {
+        left: '3%', right: '4%', bottom: '3%', containLabel: true
+      },
+      xAxis: {
+        type: 'value', max: 100,
+        axisLabel: { formatter: '{value}%' },
+        splitLine: { lineStyle: { color: '#eee', type: 'dashed' } }
+      },
+      yAxis: {
+        type: 'category',
+        data: ['椰胡', '唢呐', '鼓', '锣', '钹', '箫/笛', '扬琴', '喉管'],
+        axisLine: { show: false },
+        axisTick: { show: false },
+        axisLabel: { color: '#8b5a2b', fontSize: 14, fontWeight: 500 }
+      },
+      series: [{
+        name: '使用频次',
+        type: 'bar',
+        data: [98, 91, 88, 81, 77, 73, 63, 35],
+        barWidth: '40%',
+        itemStyle: { borderRadius: [0, 6, 6, 0] },
+        label: {
+          show: true, position: 'right',
+          formatter: '{c}%', color: '#8b5a2b', fontWeight: 500
+        }
+      }]
+    };
+    instrumentChart.setOption(option);
+    window.addEventListener('resize', function () {
+      instrumentChart.resize();
+    });
+  </script>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

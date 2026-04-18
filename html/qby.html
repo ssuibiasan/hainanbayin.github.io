@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/main.css" rel="stylesheet" />
+  <link href="../css/qby.css" rel="stylesheet" />
+  <title>海南八音 - 趣八音</title>
+  <style>
+    /* 全局重置，避免默认样式干扰 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 标题样式 */
+    .qby-title-wrapper {
+      max-width: 1400px;
+      margin: 40px auto 0 auto;
+      padding: 0 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .qby-title-img {
+      max-width: 90%;
+      height: auto;
+      display: inline-block;
+    }
+
+    /* ✅ 核心修复：主功能区容器，固定宽高比，解决高度为0的问题 */
+    .qby-main-box {
+      position: relative;
+      max-width: 1600px;
+      margin: 30px auto 40px auto;
+      padding: 0 20px;
+      width: 90%;
+      /* 固定和背景图一致的宽高比，页面加载就有高度，不会为0 */
+      aspect-ratio: 16 / 7;
+    }
+
+    /* 背景图：铺满容器，层级在最底层 */
+    .qby-main-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      z-index: 1;
+    }
+
+    /* ✅ 内容容器：不用绝对定位的height:100%，改成flex铺满，解决高度问题 */
+    .qby-main-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 60px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    /* 海报容器：固定宽高比，不会被压缩 */
+    .poster-wrapper {
+      width: 380px;
+      aspect-ratio: 38 / 50;
+      border: 3px solid #b58d3f;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .poster-video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+    }
+
+    /* 按钮样式 */
+    .qby-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .qby-function-btn {
+      padding: 15px 45px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #333;
+      background: #d4c2a8;
+      border: 2px solid #b58d3f;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .qby-function-btn:hover {
+      background: #e8d7bf;
+      transform: scale(1.05);
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 992px) {
+      .qby-main-content {
+        padding: 30px 40px;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .poster-wrapper {
+        width: 70%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .qby-main-content {
+        padding: 20px;
+      }
+
+      .poster-wrapper {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏完全不动 -->
+  <nav class="navbar navbar-expand-lg custom-brown-nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">海南八音文化 </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tls.html">探历史</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="syq.html">赏乐器</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tyl.html">听音律</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="qby.html">趣八音</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 标题区 -->
+  <div class="qby-title-wrapper">
+    <img src="../img/qby tittle.png" alt="趣玩八音" class="qby-title-img">
+  </div>
+
+  <!-- ✅ 重构后的主功能区，彻底解决黑屏问题 -->
+  <div class="qby-main-box">
+    <!-- 背景图 -->
+    <img src="../img/qby center bg.png" alt="主功能区背景" class="qby-main-bg">
+
+    <!-- 内容区 -->
+    <div class="qby-main-content">
+      <!-- 海报视频区 -->
+      <div class="poster-wrapper">
+        <video id="posterVideo" class="poster-video" muted loop playsinline preload="auto"></video>
+      </div>
+
+      <!-- 按钮区 -->
+      <div class="qby-btn-group">
+        <button class="qby-function-btn" id="randomBtn">随机生成海报</button>
+        <button class="qby-function-btn" id="saveBtn">一键保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 优化后的JS，增加视频加载容错 -->
+  <script>
+    // 你的视频列表，确保文件名和路径完全正确
+    const posterList = [
+      "../img/g.mp4",
+      "../img/sn.mp4",
+      "../img/l.mp4",
+      "../img/dx.mp4",
+      "../img/hg.mp4",
+      "../img/yq.mp4",
+      "../img/pp.mp4",
+      "../img/g.mp4"
+    ];
+
+    const video = document.getElementById('posterVideo');
+    const randomBtn = document.getElementById('randomBtn');
+    const saveBtn = document.getElementById('saveBtn');
+
+    // 页面加载完成后初始化
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('✅ 页面加载完成，容器高度：', document.querySelector('.qby-main-box').offsetHeight);
+      loadAndPlayVideo(0); // 加载第一个视频
+    });
+
+    // 加载并播放视频
+    function loadAndPlayVideo(index) {
+      const src = posterList[index];
+      console.log('🎬 正在加载视频：', src);
+
+      // 重置视频
+      video.pause();
+      video.src = src;
+      video.load();
+
+      // 视频元数据加载完成（确认有宽高）
+      video.onloadedmetadata = () => {
+        console.log('✅ 视频元数据加载成功，视频尺寸：', video.videoWidth, 'x', video.videoHeight);
+      };
+
+      // 视频可以播放了
+      video.oncanplay = () => {
+        console.log('✅ 视频可以播放，开始播放');
+        video.play().then(() => {
+          console.log('▶️ 视频播放正常');
+        }).catch(err => {
+          console.warn('⚠️ 自动播放被浏览器阻止，点击随机按钮即可播放');
+          console.error(err);
+        });
+      };
+
+      // 视频加载失败
+      video.onerror = () => {
+        console.error('❌ 视频加载失败！请检查路径和文件：', src);
+        alert('视频加载失败！请检查文件路径是否正确，视频编码是否为H.264');
+      };
+    }
+
+    // 随机生成海报按钮
+    randomBtn.addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * posterList.length);
+      console.log('🎲 随机选中索引：', randomIndex);
+      loadAndPlayVideo(randomIndex);
+    });
+
+    // 一键保存按钮
+    saveBtn.addEventListener('click', () => {
+      // 检查视频是否正常加载
+      if (video.readyState < 2) {
+        alert('视频还在加载中，请稍等几秒再试！');
+        return;
+      }
+      if (video.videoWidth === 0 || video.videoHeight === 0) {
+        alert('视频未正常加载，请先点击「随机生成海报」加载视频！');
+        return;
+      }
+
+      // 截取当前帧保存
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      canvas.toBlob((blob) => {
+        const downloadUrl = URL.createObjectURL(blob);
+        const aTag = document.createElement('a');
+        aTag.href = downloadUrl;
+        aTag.download = `海南八音海报_${Date.now()}.png`;
+        aTag.click();
+        URL.revokeObjectURL(downloadUrl);
+        console.log('💾 海报保存成功！');
+      }, 'image/png');
+    });
+  </script>
+</body>
+
+</html>

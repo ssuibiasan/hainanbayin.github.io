@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/main.css" rel="stylesheet" />
+  <link href="../css/qby.css" rel="stylesheet" />
+  <title>海南八音 - 趣八音</title>
+  <!-- 👇 原有样式完全不动，仅新增海报/按钮相关样式 -->
+  <style>
+    /* 原有标题样式，完全不动 */
+    .qby-title-wrapper {
+      max-width: 1400px;
+      margin: 40px auto 0 auto;
+      padding: 0 20px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .qby-title-img {
+      max-width: 90%;
+      height: auto;
+      display: inline-block;
+      object-fit: contain;
+    }
+
+    /* 原有主功能区容器，完全不动 */
+    .qby-main-box {
+      position: relative;
+      max-width: 1800px;
+      margin: 30px auto 40px auto;
+      padding: 0 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .qby-main-bg {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border-radius: 24px;
+    }
+
+    .qby-main-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 60px 80px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+      z-index: 2;
+    }
+
+    /* 响应式适配，原有完全不动 */
+    @media (max-width: 992px) {
+      .qby-main-content {
+        padding: 30px 40px;
+        flex-direction: column;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .qby-main-content {
+        padding: 20px;
+      }
+    }
+
+    /* ==============================================
+       👇 新增：海报展示区样式（匹配设计图）
+       ============================================== */
+    .poster-wrapper {
+      width: 380px;
+      height: 500px;
+      border: 3px solid #b58d3f;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .poster-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 响应式适配海报尺寸 */
+    @media (max-width: 992px) {
+      .poster-wrapper {
+        width: 80%;
+        height: auto;
+        aspect-ratio: 38/50;
+      }
+    }
+
+    /* ==============================================
+       👇 新增：按钮组样式（匹配设计图国风风格）
+       ============================================== */
+    .qby-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .qby-function-btn {
+      padding: 15px 45px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #333;
+      background: #d4c2a8;
+      border: 2px solid #b58d3f;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .qby-function-btn:hover {
+      background: #e8d7bf;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(181, 141, 63, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏完全不动，仅修正了链接空格错误 -->
+  <nav class="navbar navbar-expand-lg custom-brown-nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href=" ">首页</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="tls.html">探历史</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="syq.html">赏乐器</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tyl.html">听音律</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="qby.html">趣八音</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 标题区完全不动 -->
+  <div class="qby-title-wrapper">
+    <img src="../img/qby tittle.png" alt="趣玩八音" class="qby-title-img">
+  </div>
+
+  <!-- 主功能区：原有结构完全不动，仅新增海报+按钮内容 -->
+  <div class="qby-main-box">
+    <!-- 背景图完全不动 -->
+    <img src="../img/qby center bg.png" alt="主功能区背景" class="qby-main-bg">
+
+    <!-- 内容容器：新增海报+按钮，原有结构不动 -->
+    <div class="qby-main-content">
+      <!-- 👇 新增：左侧海报展示区 -->
+      <div class="poster-wrapper">
+        <video id="posterVideo" class="poster-video" autoplay muted loop>
+          <source src="../poster/yehu.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 👇 新增：右侧按钮组 -->
+      <div class="qby-btn-group">
+        <button class="qby-function-btn" id="randomBtn">随机生成海报</button>
+        <button class="qby-function-btn" id="saveBtn">一键保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 👇 新增：核心功能JS -->
+  <script>
+    // ====================== 配置项（替换成你自己的MP4路径即可）======================
+    // 8种乐器的动态海报MP4路径，和你「听音律」页面一一对应
+    const posterList = [
+      "../img/yh.mp4",
+      "../img/sn.mp4",
+      "../img/l.mp4",
+      "../img/dx.mp4",
+      "../img/hg.mp4",
+      "../img/yq.mp3",
+      "../img/pp.mp4",
+      "../img/g.mp4"
+    ];
+
+    // 获取元素
+    const videoElement = document.getElementById('posterVideo');
+    const randomBtn = document.getElementById('randomBtn');
+    const saveBtn = document.getElementById('saveBtn');
+
+    // ====================== 1. 随机生成海报功能 ======================
+    randomBtn.addEventListener('click', () => {
+      // 随机抽取一个海报
+      const randomIndex = Math.floor(Math.random() * posterList.length);
+      const randomPosterSrc = posterList[randomIndex];
+
+      // 切换视频源并播放
+      videoElement.src = randomPosterSrc;
+      videoElement.load();
+      videoElement.play().catch(err => console.log('海报播放失败：', err));
+    });
+
+    // ====================== 2. 一键保存功能 ======================
+    saveBtn.addEventListener('click', () => {
+      // 方案1：默认保存「当前海报帧为高清PNG图片」（最适合海报分享，推荐）
+      const canvas = document.createElement('canvas');
+      const { videoWidth, videoHeight } = videoElement;
+      canvas.width = videoWidth;
+      canvas.height = videoHeight;
+
+      // 截取视频当前帧
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+      // 生成下载链接，自动触发下载
+      canvas.toBlob((blob) => {
+        const downloadUrl = URL.createObjectURL(blob);
+        const aTag = document.createElement('a');
+        aTag.href = downloadUrl;
+        aTag.download = `海南八音海报_${new Date().getTime()}.png`;
+        aTag.click();
+        URL.revokeObjectURL(downloadUrl);
+      }, 'image/png');
+
+      // 方案2：如需保存「完整MP4动态视频」，注释上面代码，取消下面注释即可
+      // const aTag = document.createElement('a');
+      // aTag.href = videoElement.src;
+      // aTag.download = `海南八音动态海报_${new Date().getTime()}.mp4`;
+      // aTag.click();
+    });
+
+    // 页面加载完成后自动播放默认海报
+    window.addEventListener('load', () => {
+      videoElement.play().catch(err => console.log('自动播放失败，点击随机按钮即可正常播放：', err));
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/bootstrap-icons.css" rel="stylesheet">
+  <link href="../css/main.css" rel="stylesheet" />
+  <link href="../css/tls.css" rel="stylesheet" />
+  <title>探历史 - 海南八音文化</title>
+</head>
+
+<body>
+  <!-- 导航栏 完全未改动 -->
+  <nav class="navbar navbar-expand-lg custom-brown-nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">海南八音文化</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="tls.html">探历史</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="syq.html">赏乐器</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tyl.html">听音律</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="qby.html">趣八音</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid py-4">
+    <div class="timeline-box">
+      <h2 class="timeline-title">八音文化发展时间线</h2>
+
+      <!-- 原有时间线组件 完全未改动 -->
+      <div class="timeline-slider">
+        <button class="arrow-btn" id="leftBtn">‹</button>
+
+        <!-- 时间线轨道 -->
+        <div class="scroll-wrapper">
+          <div class="timeline-track" id="track">
+            <div class="timeline-node type-bottom">
+              <a href="tls7.html" class="node-link">
+                <div class="node-img">
+                  <img src="../img/time7.png" alt="唐代">
+                </div>
+                <div class="node-dash"></div>
+                <div class="node-dot"></div>
+                <div class="node-text">
+                  <div class="node-date">起源</div>
+                  <div class="node-name">唐代</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="timeline-node type-bottom">
+              <a href="tls6.html" class="node-link">
+                <div class="node-img">
+                  <img src="../img/time6.png" alt="宋代">
+                </div>
+                <div class="node-dash"></div>
+                <div class="node-dot"></div>
+                <div class="node-text">
+                  <div class="node-date">宋代</div>
+                  <div class="node-name">雏形</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="timeline-node type-bottom">
+              <a href="tls5.html" class="node-link">
+                <div class="node-img">
+                  <img src="../img/time5.png" alt="明代">
+                </div>
+                <div class="node-dash"></div>
+                <div class="node-dot"></div>
+                <div class="node-text">
+                  <div class="node-date">明代</div>
+                  <div class="node-name">成熟</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="timeline-node type-bottom">
+              <a href="tls4.html" class="node-link">
+                <div class="node-img">
+                  <img src="../img/time4.png" alt="清代">
+                </div>
+                <div class="node-dash"></div>
+                <div class="node-dot"></div>
+                <div class="node-text">
+                  <div class="node-date">清代</div>
+                  <div class="node-name">普及</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="timeline-node type-bottom">
+              <a href="tls3.html" class="node-link">
+                <div class="node-img">
+                  <img src="../img/time3.png" alt="民国">
+                </div>
+                <div class="node-dash"></div>
+                <div class="node-dot"></div>
+                <div class="node-text">
+                  <div class="node-date">民国</div>
+                  <div class="node-name">传播</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="timeline-node type-bottom">
+              <a href="tls2.html" class="node-link">
+                <div class="node-img">
+                  <img src="../img/time2.png" alt="近现代">
+                </div>
+                <div class="node-dash"></div>
+                <div class="node-dot"></div>
+                <div class="node-text">
+                  <div class="node-date">近现代</div>
+                  <div class="node-name">传承</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="timeline-node type-bottom">
+              <a href="tls1.html" class="node-link">
+                <div class="node-img">
+                  <img src="../img/time1.png" alt="当代">
+                </div>
+                <div class="node-dash"></div>
+                <div class="node-dot"></div>
+                <div class="node-text">
+                  <div class="node-date">当代</div>
+                  <div class="node-name">活化</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <button class="arrow-btn" id="rightBtn">›</button>
+      </div>
+
+      <div class="trend-chart-box mt-5">
+        <h3 class="text-center mb-4" style="color: #333;">海南八音传承热度趋势</h3>
+        <div id="trendChart" class="w-100" style="height: clamp(250px, 40vw, 320px);"></div>
+
+        <p class="text-center text-muted mt-2 mb-0">基于多篇文献综述的趋势示意</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 时间线 -->
+  <script>
+    const track = document.getElementById('track');
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+    const nodes = document.querySelectorAll('.timeline-node');
+    let currentPosition = 0;
+    let nodeWidth, containerWidth, maxPosition;
+    const scrollStepRatio = 0.5;
+
+    function calculateDimensions() {
+      nodeWidth = nodes.length > 0 ? nodes[0].offsetWidth : 0;
+      containerWidth = track.parentElement.offsetWidth;
+      maxPosition = Math.max(0, (nodes.length * nodeWidth) - containerWidth);
+      currentPosition = Math.min(currentPosition, maxPosition);
+      moveTrack();
+    }
+
+    function updateButtons() {
+      leftBtn.disabled = currentPosition <= 0;
+      rightBtn.disabled = currentPosition >= maxPosition;
+    }
+
+    function moveTrack() {
+      track.style.transform = `translateX(-${currentPosition}px)`;
+      updateButtons();
+    }
+
+    leftBtn.addEventListener('click', () => {
+      currentPosition = Math.max(0, currentPosition - (containerWidth * scrollStepRatio));
+      moveTrack();
+    });
+
+    rightBtn.addEventListener('click', () => {
+      currentPosition = Math.min(maxPosition, currentPosition + (containerWidth * scrollStepRatio));
+      moveTrack();
+    });
+
+    calculateDimensions();
+    window.addEventListener('resize', calculateDimensions);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script>
+    var trendChart = echarts.init(document.getElementById('trendChart'));
+
+    var option = {
+      color: ['#e67e22', '#d4a76a'],
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          let res = params[0].axisValue + '<br/>';
+          params.forEach(item => {
+            res += item.seriesName + '：' + (item.data > 3 ? '上升趋势' : '平稳/下降趋势') + '<br/>';
+          });
+          return res;
+        }
+      },
+      legend: {
+        data: ['非遗传承人传承热度', '民间八音班发展热度'],
+        top: 0,
+        left: 'center'
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['唐代', '宋代', '明代', '清代', '民国', '2008年', '2015年', '2020年', '2025年'],
+        axisLine: {
+          lineStyle: {
+            color: '#999'
+          }
+        }
+      },
+      yAxis: [
+        {
+          type: 'value',
+          name: '传承热度',
+          axisLabel: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisLine: {
+            show: false
+          }
+        },
+        {
+          type: 'value',
+          name: '发展热度',
+          axisLabel: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisLine: {
+            show: false
+          }
+        }
+      ],
+      series: [
+        {
+          name: '非遗传承人传承热度',
+          type: 'line',
+          smooth: true,
+          data: [0, 0, 1, 2, 3, 4, 5, 6, 7],
+          symbol: 'circle',
+          symbolSize: 8,
+          lineStyle: {
+            width: 3
+          },
+          areaStyle: {
+            opacity: 0.1
+          }
+        },
+        {
+          name: '民间八音班发展热度',
+          type: 'line',
+          smooth: true,
+          yAxisIndex: 1,
+          data: [0, 1, 3, 5, 4, 3, 2, 1.5, 1],
+          symbol: 'circle',
+          symbolSize: 8,
+          lineStyle: {
+            width: 3
+          },
+          areaStyle: {
+            opacity: 0.1
+          }
+        }
+      ]
+    };
+
+    trendChart.setOption(option);
+
+    window.addEventListener('resize', function () {
+      trendChart.resize();
+    });
+  </script>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

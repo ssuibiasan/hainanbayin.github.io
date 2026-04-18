@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/main.css" rel="stylesheet" />
+  <link href="../css/tyl.css" rel="stylesheet" />
+  <title>海南八音 - 听音律</title>
+</head>
+
+<body>
+  <!-- 导航栏  -->
+  <nav class="navbar navbar-expand-lg custom-brown-nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">海南八音文化</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="tls.html">探历史</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="syq.html">赏乐器</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="tyl.html">听音律</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="qby.html">趣八音</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="audio-circle-wrapper">
+    <div id="waveform"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: transparent;">
+    </div>
+
+    <img src="../img/tyl up.png" alt="音频交互区" class="audio-circle-bg">
+    <img src="../img/tyl cycle.png" alt="圆形装饰" class="circle-center-img">
+    <img src="../img/tyl dash.png" alt="虚线圆环" class="dash-circle-img">
+
+    <button class="instrument-btn" data-instrument="椰胡" data-audio="../music/yehu.mp3">椰胡</button>
+    <button class="instrument-btn" data-instrument="扬琴" data-audio="../music/yangqin.mp3">扬琴</button>
+    <button class="instrument-btn" data-instrument="唢呐" data-audio="../music/suona.mp3">唢呐</button>
+    <button class="instrument-btn" data-instrument="钹" data-audio="../music/guangbo.mp3">钹</button>
+    <button class="instrument-btn" data-instrument="喉管" data-audio="../music/houguan.mp3">喉管</button>
+    <button class="instrument-btn" data-instrument="萧" data-audio="../music/dongxiao.mp3">萧</button>
+    <button class="instrument-btn" data-instrument="锣" data-audio="../music/luo.mp3">锣</button>
+    <button class="instrument-btn" data-instrument="鼓" data-audio="../music/gu.mp3">鼓</button>
+
+
+    <audio id="instrumentAudio" crossOrigin="anonymous" controls>
+  </div>
+
+
+  <div class="music-cards-section">
+    <div class="music-card">
+      <img src="../img/tyl down.png" alt="音乐背景" class="card-bg">
+      <div class="card-content">
+        <h3 class="music-name">情醉椰乡</h3>
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+        <div class="control-buttons">
+          <button class="control-btn shuffle">⇄</button>
+          <button class="control-btn prev">⏮</button>
+          <button class="control-btn play">▶</button>
+          <button class="control-btn next">⏭</button>
+          <button class="control-btn loop">⟳</button>
+        </div>
+      </div>
+      <audio class="card-audio" src="../music/情醉椰乡.mp3" preload="auto">
+    </div>
+
+    <div class="music-card">
+      <img src="../img/tyl down.png" alt="音乐背景" class="card-bg">
+      <div class="card-content">
+        <h3 class="music-name">闹军坡</h3>
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+        <div class="control-buttons">
+          <button class="control-btn shuffle">⇄</button>
+          <button class="control-btn prev">⏮</button>
+          <button class="control-btn play">▶</button>
+          <button class="control-btn next">⏭</button>
+          <button class="control-btn loop">⟳</button>
+        </div>
+      </div>
+      <audio class="card-audio" src="../music/闹军坡.mp3" preload="auto">
+    </div>
+
+    <div class="music-card">
+      <img src="../img/tyl down.png" alt="音乐背景" class="card-bg">
+      <div class="card-content">
+        <h3 class="music-name">弄手花</h3>
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+        <div class="control-buttons">
+          <button class="control-btn shuffle">⇄</button>
+          <button class="control-btn prev">⏮</button>
+          <button class="control-btn play">▶</button>
+          <button class="control-btn next">⏭</button>
+          <button class="control-btn loop">⟳</button>
+        </div>
+      </div>
+      <audio class="card-audio" src="../music/弄手花.mp3" preload="auto">
+    </div>
+
+    <div class="music-card">
+      <img src="../img/tyl down.png" alt="音乐背景" class="card-bg">
+      <div class="card-content">
+        <h3 class="music-name">欢宴</h3>
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+        <div class="control-buttons">
+          <button class="control-btn shuffle">⇄</button>
+          <button class="control-btn prev">⏮</button>
+          <button class="control-btn play">▶</button>
+          <button class="control-btn next">⏭</button>
+          <button class="control-btn loop">⟳</button>
+        </div>
+      </div>
+      <audio class="card-audio" src="../music/欢宴.mp3" preload="auto">
+    </div>
+  </div>
+
+
+  <div class="container-fluid" style="width: 90%; max-width: 1800px; margin: 0 auto 60px auto;">
+    <div class="w-100">
+      <h3 class="text-center mb-4" style="color: #b88628; font-family: 思源宋体,宋体,serif;">经典曲目乐器配器构成</h3>
+      <div id="musicChart" class="w-100"
+        style="height: clamp(300px, 40vw, 380px); background: #fffbe6; border-radius: 15px; padding: 20px; box-sizing: border-box;">
+      </div>
+      <p class="text-center text-muted mt-2 mb-0">基于海南出版社《海南八音传统曲集》曲目配器分析</p>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.min.js"></script>
+  <script>
+    const instrumentBtns = document.querySelectorAll('.instrument-btn');
+    const audioElement = document.getElementById('instrumentAudio');
+    const defaultAudio = '../music/yehu.mp3';
+
+    audioElement.src = defaultAudio;
+    instrumentBtns[0].classList.add('active');
+
+    const wavesurfer = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: 'rgba(201, 168, 107, 0.9)',
+      progressColor: 'rgba(230, 190, 100, 1)',
+      cursorColor: 'transparent',
+      barWidth: 3,
+      barRadius: 2,
+      barGap: 2,
+      height: 250,
+      responsive: true,
+      normalize: true,
+      interact: false,
+      fillParent: true
+    });
+    wavesurfer.load(defaultAudio);
+
+
+    instrumentBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        instrumentBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const audioSrc = btn.dataset.audio;
+        console.log('即将播放的音频路径：', audioSrc);
+
+        audioElement.src = audioSrc;
+        wavesurfer.load(audioSrc);
+
+        audioElement.play().catch(err => {
+          console.error('播放失败，详细错误：', err);
+        });
+        console.log(`播放【${btn.dataset.instrument}】音频`);
+      });
+    });
+
+    audioElement.addEventListener('play', () => {
+      wavesurfer.play();
+      audioElement.classList.add('show-controls');
+    });
+
+    audioElement.addEventListener('pause', () => {
+      wavesurfer.pause();
+    });
+
+    audioElement.addEventListener('ended', () => {
+      wavesurfer.pause();
+      audioElement.classList.remove('show-controls');
+      instrumentBtns.forEach(b => b.classList.remove('active'));
+      instrumentBtns[0].classList.add('active');
+      audioElement.src = defaultAudio;
+      wavesurfer.load(defaultAudio);
+    });
+
+
+    audioElement.addEventListener('timeupdate', () => {
+      if (!isNaN(audioElement.duration)) {
+        wavesurfer.seekTo(audioElement.currentTime / audioElement.duration);
+      }
+    });
+  </script>
+
+  <script>
+    const musicCards = document.querySelectorAll('.music-card');
+
+    musicCards.forEach((card, index) => {
+      const playBtn = card.querySelector('.control-btn.play');
+      const progressBar = card.querySelector('.progress-bar');
+      const cardAudio = card.querySelector('.card-audio');
+
+
+      playBtn.addEventListener('click', () => {
+        if (cardAudio.paused) {
+          document.querySelectorAll('.card-audio').forEach(otherAudio => {
+            if (otherAudio !== cardAudio) {
+              otherAudio.pause();
+              otherAudio.currentTime = 0;
+            }
+          });
+
+          document.querySelectorAll('.music-card .control-btn.play').forEach(btn => {
+            btn.textContent = '▶';
+          });
+
+          cardAudio.play().then(() => {
+            playBtn.textContent = '⏸';
+          }).catch(err => {
+            console.error(`卡片${index + 1}播放失败：`, err);
+          });
+        } else {
+          cardAudio.pause();
+          playBtn.textContent = '▶';
+        }
+      });
+
+      progressBar.addEventListener('input', (e) => {
+        if (!isNaN(cardAudio.duration)) {
+          const seekTime = (e.target.value / 100) * cardAudio.duration;
+          cardAudio.currentTime = seekTime;
+        }
+      });
+
+      cardAudio.addEventListener('timeupdate', () => {
+        if (!isNaN(cardAudio.duration)) {
+          const progress = (cardAudio.currentTime / cardAudio.duration) * 100;
+          progressBar.value = progress;
+        }
+      });
+
+      cardAudio.addEventListener('ended', () => {
+        playBtn.textContent = '▶';
+        progressBar.value = 0;
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script>
+    var musicChart = echarts.init(document.getElementById('musicChart'));
+    function getLevel(value) {
+      if (value >= 50) return '主导 +++';
+      if (value >= 20) return '辅助 ++';
+      return '点缀 +';
+    }
+
+    var option = {
+      color: ['#b88628', '#c9a86b', '#8b5a2b', '#d4a76a'],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        },
+        formatter: function (params) {
+          let res = params[0].axisValue + '<br/>';
+          params.forEach(item => {
+            res += item.seriesName + '：' + getLevel(item.value) + '<br/>';
+          });
+          return res;
+        }
+      },
+      legend: {
+        data: ['丝类（椰胡/扬琴）', '竹类（箫/笛/喉管）', '革类（鼓）', '金类（锣/钹）'],
+        top: 0,
+        left: 'center',
+        textStyle: {
+          color: '#8b5a2b'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: ['情醉椰乡', '闹军坡', '弄手花', '欢宴'],
+        axisLine: {
+          lineStyle: {
+            color: '#8b5a2b'
+          }
+        },
+        axisLabel: {
+          color: '#8b5a2b',
+          fontWeight: 500
+        }
+      },
+      yAxis: {
+        type: 'value',
+        max: 100,
+        axisLabel: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        axisLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: '丝类（椰胡/扬琴）',
+          type: 'bar',
+          stack: 'total',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [65, 25, 55, 40],
+          barRadius: [6, 6, 0, 0]
+        },
+        {
+          name: '竹类（箫/笛/喉管）',
+          type: 'bar',
+          stack: 'total',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [20, 15, 25, 20]
+        },
+        {
+          name: '革类（鼓）',
+          type: 'bar',
+          stack: 'total',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [10, 30, 12, 22]
+        },
+        {
+          name: '金类（锣/钹）',
+          type: 'bar',
+          stack: 'total',
+          emphasis: {
+            focus: 'series'
+          },
+          data: [5, 30, 8, 18],
+          barRadius: [0, 0, 6, 6]
+        }
+      ]
+    };
+
+    musicChart.setOption(option);
+
+    window.addEventListener('resize', function () {
+      musicChart.resize();
+    });
+  </script>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
